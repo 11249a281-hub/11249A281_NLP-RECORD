@@ -1,0 +1,14 @@
+
+import nltk
+s = "The students read their textbooks."
+words = nltk.word_tokenize(s)
+tags = nltk.pos_tag(words)
+grammar = r"""
+NP: {<DT|PRP\$>?<JJ>*<NN.*>+}
+"""
+parser = nltk.RegexpParser(grammar)
+tree = parser.parse(tags)
+print("Updated Grammar:")
+print(grammar)
+print("Output:")
+print(tree)
