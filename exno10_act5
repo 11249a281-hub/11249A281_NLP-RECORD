@@ -1,0 +1,14 @@
+
+import nltk
+s = "The very intelligent student reads a book."
+words = nltk.word_tokenize(s)
+tags = nltk.pos_tag(words)
+
+basic = r"NP: {<DT>?<JJ>*<NN.*>+}"
+improved = r"NP: {<DT>?<RB.*>*<JJ>*<NN.*>+}"
+
+print("Basic Grammar:")
+print(nltk.RegexpParser(basic).parse(tags))
+
+print("\nImproved Grammar:")
+print(nltk.RegexpParser(improved).parse(tags))
