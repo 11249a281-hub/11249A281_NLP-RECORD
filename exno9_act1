@@ -1,0 +1,18 @@
+
+import nltk
+sentences = [
+    "The tall boy runs fast.",
+    "A beautiful flower blooms.",
+    "The computer science student studies NLP."
+]
+grammar = "NP: {<DT>?<JJ>*<NN.*>+}"
+parser = nltk.RegexpParser(grammar)
+for s in sentences:
+    words = nltk.word_tokenize(s)
+    tags = nltk.pos_tag(words)
+    tree = parser.parse(tags)
+    print("\n", s)
+    for subtree in tree.subtrees(
+        filter=lambda t: t.label() == "NP"
+    ):
+        print("Noun Phrase:", " ".join(w for w, t in subtree.leaves()))
