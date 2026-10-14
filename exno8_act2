@@ -1,0 +1,29 @@
+
+import nltk
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger_eng')
+sentences = [
+    "The children are playing outside.",
+    "She writes beautiful poems.",
+    "They visited the library yesterday."
+]
+for s in sentences:
+    print("\nSentence:", s)
+    tags = nltk.pos_tag(nltk.word_tokenize(s))
+    print("Tags:", tags)
+    for word, tag in tags:
+        if tag.startswith("NN"):
+            category = "Noun"
+        elif tag.startswith("VB"):
+            category = "Verb"
+        elif tag.startswith("JJ"):
+            category = "Adjective"
+        elif tag.startswith("RB"):
+            category = "Adverb"
+        elif tag.startswith("PRP"):
+            category = "Pronoun"
+        elif tag == "DT":
+            category = "Determiner"
+        else:
+            continue
+        print(word, "-", category)
