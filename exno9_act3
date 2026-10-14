@@ -1,0 +1,11 @@
+
+import nltk
+s = "The young researcher develops an AI model"
+words = nltk.word_tokenize(s)
+tags = nltk.pos_tag(words)
+print("POS Tags:", tags)
+grammar = "NP: {<DT>?<JJ>*<NN.*>+}"
+parser = nltk.RegexpParser(grammar)
+tree = parser.parse(tags)
+print("Chunked Sentence:")
+print(tree)
