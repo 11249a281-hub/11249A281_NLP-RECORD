@@ -1,0 +1,21 @@
+
+import nltk
+sentences = [
+    "The student reads a book in the library.",
+    "The professor teaches in the classroom.",
+    "Students play football on the ground.",
+    "The librarian arranges the books on the shelf.",
+    "The researcher works in the laboratory."
+]
+grammar = r"""
+NP: {<DT>?<JJ>*<NN.*>+}
+PP: {<IN><NP>}
+VP: {<VB.*><NP|PP>*}
+"""
+parser = nltk.RegexpParser(grammar)
+for s in sentences:
+    words = nltk.word_tokenize(s)
+    tags = nltk.pos_tag(words)
+    tree = parser.parse(tags)
+    print("\nSentence:", s)
+    print(tree)
