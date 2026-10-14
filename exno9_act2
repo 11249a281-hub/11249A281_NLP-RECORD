@@ -1,0 +1,11 @@
+import nltk
+sentence = "The teacher explains the lesson in the classroom."
+words = nltk.word_tokenize(sentence)
+tags = nltk.pos_tag(words)
+grammar = r"""
+NP: {<DT>?<JJ>*<NN.*>+}
+PP: {<IN><NP>}
+"""
+parser = nltk.RegexpParser(grammar)
+tree = parser.parse(tags)
+print(tree)
