@@ -1,0 +1,14 @@
+
+import nltk
+s = "The young scientist is developing a new application."
+words = nltk.word_tokenize(s)
+tags = nltk.pos_tag(words)
+grammar = r"""
+NP: {<DT>?<JJ>*<NN.*>+}
+PP: {<IN><NP>}
+"""
+parser = nltk.RegexpParser(grammar)
+tree = parser.parse(tags)
+print("POS Tags:", tags)
+print("Chunk Structure:")
+print(tree)
