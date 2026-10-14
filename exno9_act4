@@ -1,0 +1,13 @@
+
+import nltk
+phrases = ["a student", "the very intelligent student"]
+grammar = r"""
+NP: {<DT>?<RB>*<JJ>*<NN.*>+}
+"""
+parser = nltk.RegexpParser(grammar)
+for phrase in phrases:
+    words = nltk.word_tokenize(phrase)
+    tags = nltk.pos_tag(words)
+    tree = parser.parse(tags)
+    print("\nPhrase:", phrase)
+    print(tree)
