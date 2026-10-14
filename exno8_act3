@@ -1,0 +1,14 @@
+import nltk
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger_eng')
+sentences = [
+    "I read a book.",
+    "Please book a ticket.",
+    "Children play football.",
+    "We watched a play."
+]
+for s in sentences:
+    words = nltk.word_tokenize(s)
+    tags = nltk.pos_tag(words)
+    print("\n", s)
+    print(tags)
