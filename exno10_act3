@@ -1,0 +1,15 @@
+
+import nltk
+s = "The boy plays in the garden."
+words = nltk.word_tokenize(s)
+tags = nltk.pos_tag(words)
+np_grammar = r"NP: {<DT>?<JJ>*<NN.*>+}"
+grammar = r"""
+NP: {<DT>?<JJ>*<NN.*>+}
+PP: {<IN><NP>}
+VP: {<VB.*><PP>?}
+"""
+print("NP Only:")
+print(nltk.RegexpParser(np_grammar).parse(tags))
+print("\nNP + VP + PP:")
+print(nltk.RegexpParser(grammar).parse(tags))
