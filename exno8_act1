@@ -1,0 +1,15 @@
+
+import nltk
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger_eng')
+s = "Ravi plays cricket every evening."
+words = nltki.word_tokenize(s)
+tags = nltk.pos_tag(words)
+print(tags)
+for word, tag in tags:
+    if tag.startswith('NN'):
+        print(word, "- Noun")
+    elif tag.startswith('VB'):
+        print(word, "- Verb")
+    elif tag.startswith('RB'):
+        print(word, "- Adverb")
